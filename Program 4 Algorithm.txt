@@ -1,0 +1,159 @@
+1. Start program
+
+2. Prompt user for filename.
+
+	Ask the user to enter the CSV filename.
+
+	If the filename is empty, ask again.
+
+	If the filename does not end with ".csv", add ".csv".
+
+	Try to open the file.
+
+	If the file does not exist, print an error and ask again.
+
+	When the file successfully opens, return the filename.
+
+3. Read transactions from the file.
+
+	Create an empty list for valid transactions.
+
+	Create an empty list for transactions that are not included.
+
+	Use csv.DictReader to read each row of the file.
+
+	For each row:
+
+		If the TransactionID does not start with VG:
+
+			Print that the transaction is excluded.
+
+			Add the row to the not included list.
+
+			Continue to the next row.
+
+		Otherwise attempt the following:
+
+			Convert Price to a float.
+
+			Convert Quantity to an integer.
+
+			Multiply Price and Quantity to calculate Amount.
+
+			Format Amount to two decimal places.
+
+			Add Amount to the row.
+
+			Append the row to the list of valid transactions.
+
+		If a ValueError occurs, print an error message, add the row to the not included list, and continue.
+
+		If a KeyError occurs, print an error message, add the row to the not included list, and continue.
+
+	After processing all rows:
+
+		Print the count of valid transactions.
+
+		Print the count of excluded transactions.
+
+	Return the list of valid transactions.
+
+4. Mark popularity of each transaction.
+
+	For each transaction:
+
+		If Quantity is equal to 1, set Popularity to Low.
+
+		If Quantity is equal to 2, set Popularity to Moderate.
+
+		If Quantity is 3 or greater, set Popularity to Hot Seller.
+
+	Return the updated transaction list.
+
+5. Calculate summary statistics.
+
+	Total Transactions: number of valid transactions.
+
+	Total Revenue: sum of all Amount values.
+
+	Average Spent:
+
+		If there are no transactions, the average is 0.00.
+
+		Otherwise compute sum of Amount values divided by number of transactions.
+
+6. Find top selling games.
+
+	Create a dictionary to store total sales for each GameTitle.
+
+	For each transaction, add its Amount to that game's total.
+
+	Sort the games in descending order by total sales using sorted().
+
+	Print the top three game titles and their total sales.
+
+7. Find top customer.
+
+	Create a dictionary to store total spending by each customer.
+
+	For each transaction, add its Amount to that customer's total.
+
+	Identify the customer with the highest total spending using max().
+
+	Print the customer name and the total amount spent.
+
+8. Save processed data to a new CSV file.
+
+	Create a new filename by adding "processed_" in front of the original filename.
+
+	Write all transactions to this new file using csv.DictWriter.
+
+	Include the header row and all updated fields.
+
+	Notify the user that the file has been saved.
+
+9. Display menu.
+
+	Print the following options:
+
+		1: Display Summary of Statistics
+
+		2: Find Top Selling Games
+
+		3: Find Top Customer
+
+		4: Save Processed Data to CSV
+
+		5: Exit
+
+	Ask the user to enter a choice.
+
+	If the choice is invalid, ask again.
+	
+	Return choice
+
+10. Route menu selections.
+
+	If the user selects option 1, display summary statistics.
+
+	If the user selects option 2, find top selling games.
+
+	If the user selects option 3, find top customer.
+
+	If the user selects option 4, save processed data.
+
+	If the user selects option 5, print exit message and end the menu loop.
+
+	Otherwise continue asking for menu choices.
+
+11. Main program flow.
+
+	Call the function to get a valid filename.
+
+	Read and process all transactions.
+
+	Mark popularity for each transaction.
+
+	Enter the menu loop where the user can perform different actions.
+
+12. End program.
